@@ -115,62 +115,6 @@ ParamsSetup (
 	return err;
 }
 
-static PF_Err
-MySimpleGainFunc16 (
-	void		*refcon, 
-	A_long		xL, 
-	A_long		yL, 
-	PF_Pixel16	*inP, 
-	PF_Pixel16	*outP)
-{
-	PF_Err		err = PF_Err_NONE;
-
-	GainInfo	*giP	= reinterpret_cast<GainInfo*>(refcon);
-	PF_FpLong	tempF	= 0;
-					
-	if (giP){
-		tempF = giP->gainF * PF_MAX_CHAN16 / 100.0;
-		if (tempF > PF_MAX_CHAN16){
-			tempF = PF_MAX_CHAN16;
-		};
-
-		outP->alpha		=	inP->alpha;
-		outP->red		=	MIN((inP->red	+ (A_u_char) tempF), PF_MAX_CHAN16);
-		outP->green		=	MIN((inP->green	+ (A_u_char) tempF), PF_MAX_CHAN16);
-		outP->blue		=	MIN((inP->blue	+ (A_u_char) tempF), PF_MAX_CHAN16);
-	}
-
-	return err;
-}
-
-static PF_Err
-MySimpleGainFunc8 (
-	void		*refcon, 
-	A_long		xL, 
-	A_long		yL, 
-	PF_Pixel8	*inP, 
-	PF_Pixel8	*outP)
-{
-	PF_Err		err = PF_Err_NONE;
-
-	GainInfo	*giP	= reinterpret_cast<GainInfo*>(refcon);
-	PF_FpLong	tempF	= 0;
-					
-	if (giP){
-		tempF = giP->gainF * PF_MAX_CHAN8 / 100.0;
-		if (tempF > PF_MAX_CHAN8){
-			tempF = PF_MAX_CHAN8;
-		};
-
-		outP->alpha		=	inP->alpha;
-		outP->red		=	MIN((inP->red	+ (A_u_char) tempF), PF_MAX_CHAN8);
-		outP->green		=	MIN((inP->green	+ (A_u_char) tempF), PF_MAX_CHAN8);
-		outP->blue		=	MIN((inP->blue	+ (A_u_char) tempF), PF_MAX_CHAN8);
-	}
-
-	return err;
-}
-
 static PF_Err 
 Render (
 	PF_InData		*in_data,
