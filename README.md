@@ -1,5 +1,6 @@
 # color_manager
 
+[![license](https://img.shields.io/badge/license-MIT-yellow)](https://github.com/sca1d/color_manager/blob/master/LICENSE)
 [![download](https://img.shields.io/badge/download-aex-green)](https://github.com/sca1d/color_manager/releases/download/v1.0/color_manager.aex)
 [![release](https://img.shields.io/badge/release-v1.0-blue)](https://github.com/sca1d/color_manager/releases/tag/v1.0)
 
